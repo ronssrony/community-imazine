@@ -1,14 +1,14 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom";
 import { io } from "socket.io-client";
-const socket = io('http://localhost:3000')
+const socket = io('https://imazineblue.onrender.com')
 function Login() {
   const history = useNavigate()
   const [email, setEmail] = useState(''); 
   const [password ,setPassword] = useState('') ;
   function handlelogin(){
      
-     fetch('http://localhost:3000/api/login',{
+     fetch('https://imazineblue.onrender.com/api/login',{
       method:"POST" , 
       headers:{
         'content-type': 'application/json'
