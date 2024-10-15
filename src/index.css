@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Joan&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.scrollbar::-webkit-scrollbar{
+    width: 2px;
+    background-color:  #dfe0d4;
+    
+}
+.scrollbar::-webkit-scrollbar-thumb {
+
+    border: 2px solid crimson;
+  }
+
+.customsize{
+    width: calc( 100% - 20px );
+}
+
+.scrollbarX::-webkit-scrollbar{
+    margin-top: 6px;
+    display: none;
+}
+
+
+.mediafiles {
+    display: flex;
+    overflow-x: scroll;
+    scroll-behavior: smooth; 
+    transition: scroll-left 2s ease-in-out; 
+  }
+  
+  .images-videos {
+    min-width: 100%;
+    transition: transform 1s ease-in-out; 
+  }
+  
