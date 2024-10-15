@@ -1,8 +1,4 @@
 import Choice from "./Choice"
-
-
-
-
 function Productcart({ posts }) {
 
     
