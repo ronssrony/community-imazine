@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import useFetch from "../utils/useFetch"
 import {RiAddLine, RiArrowDropLeftLine, RiArrowDropRightLine, RiCloseLine, RiFileVideoLine, RiImageAddLine, RiSendPlane2Fill, } from '@remixicon/react'
 
-import Choicelist from "../Product/choicelist"
+import Choicelist from "../Product/Choicelist"
 import Sidebar from "../partial/Sidebar"
 import Storycard from "./Storycard"
 
