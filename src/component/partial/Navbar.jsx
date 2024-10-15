@@ -45,7 +45,7 @@ function Navbar(){
 
    useEffect(()=>{
       
-   fetch('http://localhost:3000/api/middleware',{
+   fetch('https://imazineblue.onrender.com/api/middleware',{
     credentials: 'include'
    }).then((res)=>{
      if(res.ok) { return res.json()} 
