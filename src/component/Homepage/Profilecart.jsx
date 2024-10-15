@@ -20,7 +20,7 @@ function Profilecart({data , user}) {
         if(follow==='Follow'){
             
             setPending(true)
-            fetch(`http://localhost:3000/api/follow/${data._id}`,{
+            fetch(`https://imazineblue.onrender.com/api/follow/${data._id}`,{
                 credentials:'include'
             }).then((res)=>{
             
@@ -36,7 +36,7 @@ function Profilecart({data , user}) {
         else if(follow==='Following') {
                 
                 setPending(true)
-                fetch(`http://localhost:3000/api/unfollow/${data._id}`,{
+                fetch(`https://imazineblue.onrender.com/api/unfollow/${data._id}`,{
                     credentials:'include'
                 }).then((res)=>{
                 
@@ -62,7 +62,7 @@ function Profilecart({data , user}) {
         
     <div className=" "> 
         <div className="img flex items-center gap-5 w-80">
-            <img className="w-16 h-16 rounded-[50%] object-cover" src={`http://localhost:3000/images/uploads/${data.photo}`} alt="" />
+            <img className="w-16 h-16 rounded-[50%] object-cover" src={`https://imazineblue.onrender.com/images/uploads/${data.photo}`} alt="" />
             {data.name && <Link to={`/profile/${data._id}`} className=" text-lg  text-wrap ">{data.name}</Link>}
             {!data.name && <Link to={`/profile/${data._id}`}className=" text-lg  text-wrap truncate w-24">{data.email}</Link>}
             <button disabled={pending} onClick={handlefollow} className="min-w-fit ml-5 justify-self-end bg-black text-white px-2 rounded ">{follow}</button>
