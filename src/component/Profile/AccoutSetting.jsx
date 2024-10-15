@@ -5,7 +5,7 @@ import {RiAddLine} from '@remixicon/react'
 import Sidebar from "../partial/Sidebar";
 
 function AccoutSetting() {
-    const {data, isPending , error} = useFetch('http://localhost:3000/api/profile')
+    const {data, isPending , error} = useFetch('https://imazineblue.onrender.com/api/profile')
     const [image ,setImage] = useState('/images/profile.jpg'); 
     const [ispendingimg , setPending ] = useState(false)
     const [submit , setSubmit] = useState('')
@@ -29,7 +29,7 @@ function AccoutSetting() {
         setSubmit('......')
         let form =e.target ; 
         let formdata = new FormData(form) ; 
-        fetch( `http://localhost:3000/api/profile/${data.user._id}`, {
+        fetch( `https://imazineblue.onrender.com/api/profile/${data.user._id}`, {
           method:"POST" , 
           body:formdata , 
           credentials:"include"
@@ -52,12 +52,12 @@ function AccoutSetting() {
     <div className="flex justify-center items-center h-screen"> 
     <Sidebar/>
     {data&&   <div className="h-48 w-36  relative mb-5 ">
-    {data.user.picture &&   <div className="dp h-full w-full flex flex-col  justify-center "><img className="dpimg rounded-[50%] border-4 border-opacity-70 border-[#DC143C] h-full w-full  object-cover" src={ `http://localhost:3000/images/uploads/${data.user.picture}`}/> <form onSubmit={(e)=>handleimageform(e)} encType="multipart/form-data"  >
+    {data.user.picture &&   <div className="dp h-full w-full flex flex-col  justify-center "><img className="dpimg rounded-[50%] border-4 border-opacity-70 border-[#DC143C] h-full w-full  object-cover" src={ `https://imazineblue.onrender.com/images/uploads/${data.user.picture}`}/> <form onSubmit={(e)=>handleimageform(e)} encType="multipart/form-data"  >
     <label className="absolute w-full text-center  flex justify-center bg-white bg-opacity-60 z-10 bottom-0" htmlFor="image"> <RiAddLine/> </label>
      <input type="file" name="image" id="image" className="hidden" onChange={(e)=>{previewImage(e)}}/> 
      <button className="submitbtn hidden absolute left-9  w-1/2 text-center flex justify-center bg-[#e6385a] text-white mt-2 hover:bg-opacity-70 active:bg-opacity-100 z-10 rounded" disabled={ispendingimg} type="submit">{submit}</button> </form> </div> }
     
-    {data.profile.photo &&  <div className="dp h-full w-full flex flex-col  justify-center "><img className="dpimg   h-full w-full  object-cover" src={ `http://localhost:3000/images/uploads/${data.profile.photo}`}/> <form onSubmit={(e)=>handleimageform(e)} encType="multipart/form-data"  >
+    {data.profile.photo &&  <div className="dp h-full w-full flex flex-col  justify-center "><img className="dpimg   h-full w-full  object-cover" src={ `https://imazineblue.onrender.com/images/uploads/${data.profile.photo}`}/> <form onSubmit={(e)=>handleimageform(e)} encType="multipart/form-data"  >
     <label className="absolute w-full text-center  flex justify-center bg-white bg-opacity-60 z-10 bottom-0" htmlFor="image"> <RiAddLine/> </label>
      <input type="file" name="image" id="image" className="hidden" onChange={(e)=>{previewImage(e)}}/> 
      <button className="submitbtn hidden absolute left-9  w-1/2 text-center flex justify-center bg-[#e6385a] text-white mt-2 hover:bg-opacity-70 active:bg-opacity-100 z-10 rounded" disabled={ispendingimg} type="submit">{submit}</button> </form> </div> }
