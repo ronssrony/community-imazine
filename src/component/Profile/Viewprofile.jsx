@@ -12,7 +12,7 @@ function Viewprofile() {
     const [pending , setPending] = useState(false)
     const {userid} = useParams()
     useEffect(()=>{
-        fetch('http://localhost:3000/api/myfollow',{
+        fetch('https://imazineblue.onrender.com/api/myfollow',{
             credentials:'include'
         }).then((res)=>{
             if(res.ok) return res.json() 
@@ -34,7 +34,7 @@ function Viewprofile() {
         if(follow==='Follow'){
             
             setPending(true)
-            fetch(`http://localhost:3000/api/follow/${userid}`,{
+            fetch(`https://imazineblue.onrender.com/api/follow/${userid}`,{
                 credentials:'include'
             }).then((res)=>{
             
@@ -50,7 +50,7 @@ function Viewprofile() {
         else if(follow==='Following') {
                 
                 setPending(true)
-                fetch(`http://localhost:3000/api/unfollow/${userid}`,{
+                fetch(`https://imazineblue.onrender.com/api/unfollow/${userid}`,{
                     credentials:'include'
                 }).then((res)=>{
                 
@@ -75,7 +75,7 @@ function Viewprofile() {
 
 
 
-    const {data, isPending , error} = useFetch(`http://localhost:3000/api/viewprofile/${userid}`)
+    const {data, isPending , error} = useFetch(`https://imazineblue.onrender.com/api/viewprofile/${userid}`)
    
   return (
     <div className="font-[joan] w-5/6 ">
@@ -90,7 +90,7 @@ function Viewprofile() {
     
      <div className="h-36 w-36  relative mb-5 ">
 
-    {data.profile.photo &&  <div className="dp h-full w-full flex flex-col  justify-center "><img className="dpimg rounded-[50%]   h-full w-full  object-cover" src={ `http://localhost:3000/images/uploads/${data.profile.photo}`}/> </div> }
+    {data.profile.photo &&  <div className="dp h-full w-full flex flex-col  justify-center "><img className="dpimg rounded-[50%]   h-full w-full  object-cover" src={ `https://imazineblue.onrender.com/images/uploads/${data.profile.photo}`}/> </div> }
 
 
 
