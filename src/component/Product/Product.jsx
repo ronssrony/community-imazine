@@ -8,7 +8,7 @@ function Product({product}) {
   const [message, setMessage] = useState('')
 function choicelist(params){
 
-  fetch(`http://localhost:3000/api/choicelist/${params}`,{
+  fetch(`https://imazineblue.onrender.com/api/choicelist/${params}`,{
    headers:{
      'content-type':'application/json'
    } ,
