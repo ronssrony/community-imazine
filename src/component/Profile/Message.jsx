@@ -7,18 +7,18 @@ import { RiMenuLine, RiPhoneFill, RiSendPlane2Fill } from "@remixicon/react"
 
 
 
-const socket = io('http://localhost:3000')
+const socket = io('https://imazineblue.onrender.com')
 function Message() {
  
   const [message, setMessage] =  useState('')
   const {receiverId} = useParams(); 
-  const {data,ispending , error} = useFetch(`http://localhost:3000/api/receiverprofile/${receiverId}`)
+  const {data,ispending , error} = useFetch(`https://imazineblue.onrender.com/api/receiverprofile/${receiverId}`)
   const [senderId , setSenderid] = useState()
   const [messages, setMessages] = useState([])
 
     useEffect(()=>
       {
-        fetch('http://localhost:3000/api/fetchuserid',{
+        fetch('https://imazineblue.onrender.com/api/fetchuserid',{
           credentials:'include'
         }).then((res)=>{
           if(res.ok) return res.json()
@@ -29,7 +29,7 @@ function Message() {
           socket.emit('join_room',{receiverId , senderId:data.message})
           return data.message
         }).then((senderId)=>{
-          fetch('http://localhost:3000/api/receivemessage', {
+          fetch('https://imazineblue.onrender.com/api/receivemessage', {
             method: "POST",
             headers: {
               'Content-Type': 'application/json', 
@@ -65,7 +65,7 @@ function Message() {
       var notification = new Audio('/music/tap.mp3')
       notification.play()
     
-      fetch('http://localhost:3000/api/message', {
+      fetch('https://imazineblue.onrender.com/api/message', {
         method: "POST",
         headers: {
           'Content-Type': 'application/json', 
@@ -137,7 +137,7 @@ function Message() {
 
           {data &&  <div className="w-full flex justify-between  items-center max-md:px-0  px-36">
            <div className="flex items-center gap-2">
-           <img className="w-16 h-16 rounded-full object-cover" src={ `http://localhost:3000/images/uploads/${data.user.photo}`} alt=""/>
+           <img className="w-16 h-16 rounded-full object-cover" src={ `https://imazineblue.onrender.com/images/uploads/${data.user.photo}`} alt=""/>
            <h1>{data.user.name || data.user.email}</h1>
            </div>
            <div>
