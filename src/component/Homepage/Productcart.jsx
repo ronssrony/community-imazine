@@ -191,7 +191,7 @@ function Productcart({ post , user}) {
          </div>
         <div className="reaction"> 
             <p className='mb-1'>{react} Dope</p>
-            <div className='reactionbtn flex justify-between px-2   text-lg bg-black text-white w-80 min-w-80'>
+            <div className='reactionbtn relative z-100 flex justify-between px-2   text-lg bg-black text-white w-80 min-w-80'>
                 <button onClick={handlereaction} className='border-r w-[30%] border-white '>{dope}</button>
                 <button onClick={handlereview} className='reviews border-r w-[40%] border-white  '>Reviews</button>
                 <button className='w-[30%] '>Share</button>
