@@ -6,13 +6,13 @@ import MymessageShimmer from "../Shimmers/MymessageShimmer"
 import useFetch from "../utils/useFetch"
 import { RiCloseCircleFill, RiPhoneFill } from "@remixicon/react"
 function Message() {
-  const {data , ispending , error} = useFetch('http://localhost:3000/api/fetchuserid')
+  const {data , ispending , error} = useFetch('https://imazineblue.onrender.com/api/fetchuserid')
     const [people, setPeople] = useState([]); 
   
 
 
    useEffect(()=>{
-          fetch('http://localhost:3000/api/mymessages',{
+          fetch('https://imazineblue.onrender.com/api/mymessages',{
             credentials:'include'
           }).then((res)=>{
             if(res.ok) return res.json()
