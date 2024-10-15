@@ -8,7 +8,7 @@ import Profilecart from "./Profilecart"
 
 function Home() {
   
-  const {data , ispending , error} = useFetch('https://imazineblue.onrender.com//api/postfeed')
+  const {data , ispending , error} = useFetch('https://imazineblue.onrender.com/api/postfeed')
 
 
   return (
