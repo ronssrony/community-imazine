@@ -61,7 +61,7 @@ function Profilecart({data , user}) {
     return (
         
     <div className=" "> 
-        <div className="img flex items-center gap-5 w-80">
+        <div className="img flex items-center gap-5 w-80 relative z-100">
             <img className="w-16 h-16 rounded-[50%] object-cover" src={`https://imazineblue.onrender.com/images/uploads/${data.photo}`} alt="" />
             {data.name && <Link to={`/profile/${data._id}`} className=" text-lg  text-wrap ">{data.name}</Link>}
             {!data.name && <Link to={`/profile/${data._id}`}className=" text-lg  text-wrap truncate w-24">{data.email}</Link>}
