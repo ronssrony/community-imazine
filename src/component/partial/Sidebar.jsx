@@ -4,11 +4,11 @@ import { RiCalendarEventLine, RiChat4Line, RiCreativeCommonsByLine, RiHandbagLin
 import { Link } from "react-router-dom"
 import { useNavigate } from "react-router-dom"
 import { io } from "socket.io-client"
-const socket = io('http://localhost:3000')
+const socket = io('https://imazineblue.onrender.com')
 function Sidebar() {
     const history  =useNavigate()
     function handlelogout(){
-        fetch('http://localhost:3000/api/logout',{
+        fetch('https://imazineblue.onrender.com/api/logout',{
          credentials:'include'
         }).then((res)=>{
           if(res.ok) return res.json()
