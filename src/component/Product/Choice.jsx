@@ -46,7 +46,7 @@ function Choice({post}) {
         if(reviewbox==='hidden')
         {
           setReviewbox('block')
-          fetch(`http://localhost:3000/api/reviews/${post._id}`,{
+          fetch(`https://imazineblue.onrender.com/api/reviews/${post._id}`,{
             credentials:'include'
           }).then((res)=>{
              if(res.ok) return res.json() ;
@@ -72,7 +72,7 @@ function Choice({post}) {
    function handleDelete(){
         menu.current.style.display = 'block'
 
-        fetch(`http://localhost:3000/api/post/${post._id}`, {
+        fetch(`https://imazineblue.onrender.com/api/post/${post._id}`, {
           method:"DELETE"
         }).then((res)=> res.json())
         .then((data)=>{
@@ -128,16 +128,16 @@ function Choice({post}) {
     <div  className="productimg mt-2 h-96 relative ">
       <button ref={menu} onClick={handlemenu} className='absolute right-0 z-50'><RiMore2Fill color='white' /> </button>
       <div ref={menubar} className='absolute right-0 hidden backdrop-blur-xl h-full  text-white z-50 p-3 '><button onClick={hidemenubar} className='block absolute top-0 right-0  mb-1'> <RiCloseFill color='white'/> </button>  <button className='block mb-1 mt-3'>Edit</button>  <button onClick={handleDelete}>Delete</button> </div>
-     {post.photo&& <img className='h-full min-w-80 object-cover border border-black' src={`http://localhost:3000/images/uploads/${post.photo.image}`} alt="" />} 
+     {post.photo&& <img className='h-full min-w-80 object-cover border border-black' src={`https://imazineblue.onrender.com/images/uploads/${post.photo.image}`} alt="" />} 
   
 <button onClick={handleindicator} ref={indicator} className={`z-20 absolute right-0 top-[45%] ${pulse} h-20    hidden`}><RiArrowDropRightLine/> </button>
 <button onClick={handleleftIndicator} ref={leftindicator}   className={`z-20 absolute left-0 top-[45%] h-20 hidden`}><RiArrowDropLeftLine/> </button>
 <div ref={mediafilesRef} className='mediafiles mt-2 h-96 relative flex overflow-x-scroll scrollbarX w-80 '>
 {post.videos && post.videos.map((video , ind)=>
-  <video preload='auto' autoPlay  muted key={ind} className={`images-videos object-cover block  min-w-80 h-full border border-black `} controls  src={`http://localhost:3000/images/uploads/${video}`} ></video>
+  <video preload='auto' autoPlay  muted key={ind} className={`images-videos object-cover block  min-w-80 h-full border border-black `} controls  src={`https://imazineblue.onrender.com/images/uploads/${video}`} ></video>
 )}
 {post.images && post.images.map((image , ind)=>
- <img key={ind} className={`images-videos sh-full min-w-80 object-cover border border-black`} src={`http://localhost:3000/images/uploads/${image}`} alt="" />
+ <img key={ind} className={`images-videos sh-full min-w-80 object-cover border border-black`} src={`https://imazineblue.onrender.com/images/uploads/${image}`} alt="" />
 )} 
 </div>
       
