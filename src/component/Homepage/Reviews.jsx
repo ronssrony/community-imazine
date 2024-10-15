@@ -6,7 +6,7 @@ function Reviews({comment}) {
     
     <div >
     <div className='font-semibold profile flex text-[13px] items-center gap-1 mb-1'>
-     <img className='w-10 h-10 rounded-[50%] object-cover' src={`http://localhost:3000/images/uploads/${comment.referid.photo}`} alt="" />
+     <img className='w-10 h-10 rounded-[50%] object-cover' src={`https://imazineblue.onrender.com/images/uploads/${comment.referid.photo}`} alt="" />
      <h1  >{comment.referid.name}
      <p className=' absolute left-12  text-[10px]'>{moment.utc(comment.createdAt).fromNow()}</p>
      </h1>
