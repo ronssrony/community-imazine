@@ -3,7 +3,7 @@ import ReactPlayer from "react-player"
 import { useEffect ,useState } from "react"
 import peer from "../../service/peer"
 import { io } from "socket.io-client"
-const socket = io('http://localhost:3000')
+const socket = io('https://imazineblue.onrender.com')
 function Videocall() {
 const [mystream , setMystream] = useState(null)
 const [remotestream , setRemotestream] = useState(null)
