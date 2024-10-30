@@ -15,7 +15,7 @@ function App() {
   const [callingstate ,setCallingstate] = useState(false)
 
   useEffect(() => {
-    const peer = new Peer(senderId , { host: 'localhost', port: 9000, path: '/' });
+    const peer = new Peer(senderId);
 
     peer.on('open', (id) => {
       setPeerId(id);

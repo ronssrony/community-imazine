@@ -16,7 +16,7 @@ function Receiver() {
   const [Audiostate, setAudio]  = useState(true)
   const [callingstate ,setCallingstate] = useState(false)
   useEffect(() => {
-    const peer = new Peer(senderId, { host: 'localhost', port: 9000, path: '/' });
+    const peer = new Peer(senderId);
     peer.on('call', (call) => {
       setIncomingCall(call);
       const getUserMedia = navigator.mediaDevices.getUserMedia; 
