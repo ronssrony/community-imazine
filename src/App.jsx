@@ -9,13 +9,12 @@ import Mymessages from './component/Profile/Mymessages.jsx'
 import AccoutSetting from './component/Profile/AccoutSetting.jsx'
 import Sidebar from './component/partial/Sidebar.jsx'
 import Caller from './component/Profile/Caller.jsx'
-import Receiver from './component/Profile/receiver.jsx'
+import Receiver from './component/Profile/Receiver.jsx'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { UserProvider } from './context/UserProvider.jsx'
 import { NotificationProvider } from './context/Notification.jsx'
 import { CallingBoardProvider } from './context/CallingBoard.jsx'
 import { QueryClient , QueryClientProvider  } from '@tanstack/react-query'
-
 
 
  function App() {
@@ -28,7 +27,7 @@ return (
 <> 
  <UserProvider>
   <NotificationProvider>
- 
+ <CallingBoardProvider>
    <QueryClientProvider client={queryClient}>
  
     <Router>
@@ -65,7 +64,7 @@ return (
 
     </Router>
     </QueryClientProvider>
-   
+    </CallingBoardProvider>
     </NotificationProvider>
     </UserProvider>
 </>
