@@ -1,0 +1,35 @@
+{
+    "blogs": [
+      {
+        "id": 1,
+        "title": "Understanding JavaScript Closures",
+        "body": "Closures are one of the most powerful features of JavaScript. They allow a function to access variables from an outer function's scope, even after the outer function has returned.",
+        "author": "John Doe"
+      },
+      {
+        "id": 2,
+        "title": "A Guide to RESTful APIs",
+        "body": "RESTful APIs are designed around the idea of resources, where each resource is identified by a unique URL and accessed using standard HTTP methods like GET, POST, PUT, DELETE.",
+        "author": "Jane Smith"
+      },
+      {
+        "id": 3,
+        "title": "Introduction to Tailwind CSS",
+        "body": "Tailwind CSS is a utility-first CSS framework that allows you to build custom designs directly in your markup by applying pre-defined utility classes.",
+        "author": "Emily Johnson"
+      },
+      {
+        "id": 4,
+        "title": "Getting Started with Node.js",
+        "body": "Node.js is a JavaScript runtime built on Chrome's V8 engine. It allows you to run JavaScript code outside of a browser, making it perfect for backend development.",
+        "author": "Michael Brown"
+      },
+      {
+        "id": 5,
+        "title": "Exploring React Hooks",
+        "body": "React hooks allow you to use state and other React features in functional components. The most commonly used hooks are useState, useEffect, and useContext.",
+        "author": "Alice Green"
+      }
+    ]
+  }
+  
