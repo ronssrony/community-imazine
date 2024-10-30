@@ -19,9 +19,8 @@ function Receiver() {
   useEffect(() => {
     const peer = new Peer(senderId,{
       host: 'peerserver-m2lw.onrender.com',
-      port: 9000,
       path: '/peerjs/myapp',
-      secure: true, 
+      secure: true,
   });
     peer.on('call', (call) => {
       console.log('call is comming')
