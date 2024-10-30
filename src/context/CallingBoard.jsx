@@ -70,7 +70,7 @@ export const CallingBoardProvider = ({children})=>{
     })
     
     return (
-        <callingContext.Provider>
+        <callingContext.Provider value={null}>
             {incomingCall&& <div className={` absolute z-50 drop-shadow-md  flex flex-col gap-3 rounded bg-opacity-80 items-center justify-center left-[20%]  sm:top-[30%] sm:left-[40%]  w-72 h-40 bg-slate-300`}>
             <div className="flex justify-around w-full items-center">
             <img className="w-12 h-12 object-cover rounded-3xl" src={`${baseUrl}/images/uploads/${incomingCall.photo}`} alt="" />

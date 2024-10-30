@@ -15,10 +15,17 @@ function App() {
   const [callingstate ,setCallingstate] = useState(false)
 
   useEffect(() => {
-    const peer = new Peer(senderId);
+    const peer = new Peer(senderId, {
+      host: 'peerserver-m2lw.onrender.com',
+      port: 9000,
+      path: '/peerjs/myapp',
+      secure: true, 
+  });
 
     peer.on('open', (id) => {
+     
       setPeerId(id);
+      console.log('is it working' , peerId)
     });
 
     peerInstance.current = peer;

@@ -15,9 +15,16 @@ function Receiver() {
   const [Videostate, setVideo]= useState(true)
   const [Audiostate, setAudio]  = useState(true)
   const [callingstate ,setCallingstate] = useState(false)
+
   useEffect(() => {
-    const peer = new Peer(senderId);
+    const peer = new Peer(senderId,{
+      host: 'peerserver-m2lw.onrender.com',
+      port: 9000,
+      path: '/peerjs/myapp',
+      secure: true, 
+  });
     peer.on('call', (call) => {
+      console.log('call is comming')
       setIncomingCall(call);
       const getUserMedia = navigator.mediaDevices.getUserMedia; 
   

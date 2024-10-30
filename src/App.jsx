@@ -27,7 +27,7 @@ return (
 <> 
  <UserProvider>
   <NotificationProvider>
- <CallingBoardProvider>
+   <CallingBoardProvider>
    <QueryClientProvider client={queryClient}>
  
     <Router>
