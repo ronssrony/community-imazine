@@ -18,10 +18,8 @@ import { QueryClient , QueryClientProvider  } from '@tanstack/react-query'
 
 
  function App() {
- 
   const queryClient = new QueryClient() ;
 
-  
 return (
     
 <> 
@@ -38,7 +36,6 @@ return (
   </div>
 
   <div className="flex flex-1 pt-16">
-   
     <div className="w-1/6 md:block hidden h-[calc(100vh-4rem)]  fixed top-16 left-0 bg-[#F4F2EE] ">
       <Sidebar />
     </div>
