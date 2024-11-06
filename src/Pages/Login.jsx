@@ -4,16 +4,18 @@ import { userContext } from "../context/UserProvider";
 import { Usenotification } from "../context/Notification";
 import { toast } from "react-toastify";
 import LoginFunc from "../Utility/LoginFn";
+import { UseLoginContext } from "../context/LoginProvider";
 function Login() {
   const {setUser} = useContext(userContext)
   const history = useNavigate()
   const {setmyId} = Usenotification()
   const [email, setEmail] = useState(''); 
   const [password ,setPassword] = useState('') ;
-
+  const {CloseDialog} = UseLoginContext(); 
   
   const handleLogin =()=>{
-      LoginFunc(email ,password , history ,setmyId , setUser , toast)
+      
+      LoginFunc(email ,password , history ,setmyId , setUser , toast ,CloseDialog)
   }
   return (
 

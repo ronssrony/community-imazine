@@ -2,9 +2,12 @@ import { useEffect, useState } from "react"
 import baseUrl from "../../baseUrl"
 import { Link } from "react-router-dom"
 import FollowFunc from "../../Utility/FollowFn"
+import { UseLoginContext } from "../../context/LoginProvider"
 function Profilecart({data , user , size}) {
     const [follow , setFollow] = useState('')
     const [pending , setPending] = useState(false)
+    const {handleDialog} = UseLoginContext() ;
+    
     useEffect(()=>{     
             if(user&& user.follow.includes(data._id)){
                setFollow('Following')
@@ -15,6 +18,10 @@ function Profilecart({data , user , size}) {
             }    
     },[] )
     function handlefollow(){
+        if(!user){
+            handleDialog(); 
+            return  ;
+        }
         FollowFunc(follow ,setPending ,setFollow , data ) ;
     }
     return (

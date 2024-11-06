@@ -3,7 +3,7 @@ import Reviews from './Reviews';
 import { RiArrowDropLeftLine, RiArrowDropRightLine } from '@remixicon/react';
 import ReactionFn from '../../Utility/ReactionFn';
 import { postlength ,rightIndicator ,leftIndicator } from '../../Utility/behaviorFn';
-import { reviewSubmit } from '../../Utility/ReviewFn';
+import { UseLoginContext } from "../../context/LoginProvider"
 import baseUrl from '../../baseUrl';
 function Productcart({ post , user}) {
     const [react , setReact] = useState(0) 
@@ -16,7 +16,7 @@ function Productcart({ post , user}) {
     const [pulse , setPulse] = useState('animate-pulse')
     const [totalslide , setTotalslide] = useState(0)
     const [index , setIndex] = useState(0)
-
+    const {handleDialog} = UseLoginContext() ;
 
     useEffect(()=>{
       setReact(post.reactions.length)
@@ -33,6 +33,10 @@ function Productcart({ post , user}) {
 
    
     function handlereaction(){
+      if(!user){
+        handleDialog(); 
+        return  ;
+    }
       ReactionFn(react , setReact , dope, setDope , history , post); 
     }
 
@@ -61,8 +65,11 @@ function Productcart({ post , user}) {
     }
 
     function reviewsubmit(e){
-        
-         e.preventDefault() ;
+      e.preventDefault()
+       if(!user){
+        handleDialog(); 
+        return  ;
+          }  
          let form =e.target ; 
          let formdata = new FormData(form) ; 
          fetch(`${baseUrl}/api/review/${post._id}`,{

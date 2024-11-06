@@ -15,7 +15,7 @@ import { UserProvider } from './context/UserProvider.jsx'
 import { NotificationProvider } from './context/Notification.jsx'
 import { CallingBoardProvider } from './context/CallingBoard.jsx'
 import { QueryClient , QueryClientProvider  } from '@tanstack/react-query'
-
+import { LoginProvider } from './context/LoginProvider.jsx'
 
  function App() {
   const queryClient = new QueryClient() ;
@@ -29,6 +29,7 @@ return (
    <QueryClientProvider client={queryClient}>
  
     <Router>
+   <LoginProvider>
     <div className="flex flex-col h-screen bg-[#F4F2EE] relative">
 
   <div className="fixed top-0 w-full h-16 bg-[#F4F2EE] z-50">
@@ -58,6 +59,7 @@ return (
 
   </div>
 </div>
+    </LoginProvider>
 
     </Router>
     </QueryClientProvider>

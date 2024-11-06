@@ -3,10 +3,11 @@ import useFetch from "../utils/useFetch"
 import { useEffect } from "react"
 import { useParams } from "react-router-dom"
 import Choicelist from "../Product/Choicelist"
-import { Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import {  RiArrowDropLeftLine , RiArrowDropRightLine, RiInstagramFill, RiRedditFill,RiFacebookCircleFill} from "@remixicon/react"
 import baseUrl from "../../baseUrl"
 import Storycard from "./Storycard"
+import { UseLoginContext } from "../../context/LoginProvider"
 
 function Viewprofile() {
     const [follow , setFollow] = useState('')
@@ -15,7 +16,9 @@ function Viewprofile() {
     const [stories , setStories] = useState([])
     const [card , setCard] = useState(null)
     const [initialcard,setInitialcard] = useState(0)
-
+    const localuser = JSON.parse(localStorage.getItem('myId'))
+    const {handleDialog} = UseLoginContext()
+    const history = useNavigate() ;
     useEffect(()=>{
         fetch(`${baseUrl}/api/myfollow`,{
             credentials:'include'
@@ -35,10 +38,13 @@ function Viewprofile() {
             setFollow('Follow')
             console.log(err.message)
         })
-    },[userid] )
+    },[userid])
     function handlefollow(){
-        if(follow==='Follow'){
-            
+      if(!localuser){
+        handleDialog(); 
+        return ;
+      }
+        if(follow==='Follow'){          
             setPending(true)
             fetch(`${baseUrl}/api/follow/${userid}`,{
                 credentials:'include'
@@ -46,6 +52,7 @@ function Viewprofile() {
             
                 if(res.ok) {setFollow("Following") ;setPending(false); res.json()}  
                     else {
+
                  setFollow("Try Again")
                 throw Error("something went wrong")      
             }
@@ -79,19 +86,26 @@ function Viewprofile() {
 
     }
     
+    const handleMessage = ()=>{
+      if(!localuser){
+        handleDialog(); 
+        return ;
+      }
+      history(`/message/${userid}`); 
+    }
+    
     const {data, isPending , error} = useFetch(`${baseUrl}/api/viewprofile/${userid}`)
-
-
+    
     useEffect(()=> {
-            if(data) setStories(data.profile.stories)
-    }, [data])
-     
+      if(data) setStories(data.profile.stories)
+      }, [data])
+    
     useEffect(()=>{
-        if(data){
-          const container = document.querySelector('.container'); 
-         const containersize = container.clientWidth ; 
-         console.log(containersize)
-         const cards = document.querySelectorAll('.slideitems')
+      if(data){
+        const container = document.querySelector('.container'); 
+        const containersize = container.clientWidth ; 
+        console.log(containersize)
+        const cards = document.querySelectorAll('.slideitems')
          const scrollposition = container.scrollLeft ;
            
           for (let index = 0; index < cards.length; index++) {
@@ -161,7 +175,7 @@ function Viewprofile() {
      <h1 className="text-xl font-semibold mb-2 ">{data.profile.name || data.user.fullname}  </h1>
      <div className=" flex flex-wrap  mb-2  gap-2 ">
      <button disabled={pending} onClick={handlefollow} className=" justify-self-end bg-black text-white px-2 py-1 rounded min-w-24">{follow}  </button>  
-     <Link to={`/message/${userid}`}> <button title="Message" className="bg-slate-200 border-2 border-slate-400 rounded-xl px-2 py-1">Message</button>    </Link> 
+    <button onClick={handleMessage} title="Message" className="bg-slate-200 border-2 border-slate-400 rounded-xl px-2 py-1">Message</button>
      </div>  
      <div className="socialicons flex gap-2 mt-4">
     <a href="#"> <RiInstagramFill size={36} className="hover:text-[#833ab4] transition-colors" /> </a>

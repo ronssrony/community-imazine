@@ -48,3 +48,31 @@
     transition: transform 1s ease-in-out; 
   }
   
+  .dialogbox{
+    opacity: 0;
+    transition: all 0.3s allow-discrete;
+  }
+ 
+
+  .dialogbox[open]{
+    opacity: 1;
+  }
+  @starting-style{
+    .dialogbox[open]{
+      opacity: 0;
+    }
+  }
+  .dialogbox::backdrop{
+    background-color: rgba(0, 0, 0, 0);
+    transition: all 0.3s allow-discrete;
+  }
+
+  .dialogbox[open]::backdrop{
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+
+  @starting-style{
+    .dialogbox[open]::backdrop{
+      background-color: rgba(0, 0, 0, 0);
+    }
+  }

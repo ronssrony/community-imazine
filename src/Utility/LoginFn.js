@@ -2,8 +2,9 @@
 import baseUrl from "../baseUrl";
 import socket from "../service/socket";
 
-function LoginFunc (email ,password , history ,setmyId , setUser , toast ){
-  
+
+function LoginFunc (email ,password , history ,setmyId , setUser , toast,CloseDialog ){
+
     fetch(`${baseUrl}/api/login`,{
     method:"POST" , 
     headers:{
@@ -15,6 +16,7 @@ function LoginFunc (email ,password , history ,setmyId , setUser , toast ){
     if(res.ok) { return res.json()}
     else {throw Error("The server is Not responding")}
    }).then((data)=>{
+     CloseDialog(); 
      setUser(data)
      localStorage.setItem('myId',JSON.stringify(data.imazinistId))
      setmyId(JSON.parse(localStorage.getItem('myId'))); 

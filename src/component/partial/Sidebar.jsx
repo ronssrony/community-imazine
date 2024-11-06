@@ -9,12 +9,13 @@ import { useContext } from "react"
 import { Usenotification } from "../../context/Notification"
 import baseUrl from "../../baseUrl"
 import socket from "../../service/socket"
+import { UseLoginContext } from "../../context/LoginProvider"
 
 function Sidebar() {
    const {setUser} = useContext(userContext)
     const history  =useNavigate()
     const {notify, setmyId , setNotify , myId} = Usenotification()
-   
+    const {handleDialog} = UseLoginContext()
     function handlelogout(){
        localStorage.removeItem('myId')
        setmyId(JSON.parse(localStorage.getItem('myId')));
@@ -31,8 +32,12 @@ function Sidebar() {
            history('/login')
         })
     }
-
+   
     const handleMessage = ()=>{
+      if(!myId){
+         handleDialog(); 
+         return ;
+      }; 
       if(notify)
       {
          fetch(`${baseUrl}/api/MessageNotify/${myId}`)
@@ -43,7 +48,16 @@ function Sidebar() {
             console.log(err.message)
          })
       }
+      history('/mymessages')
     }
+
+   const handleAccountsetting = ()=>{
+      if(!myId){
+         handleDialog(); 
+         return ;
+      }; 
+      history("/accountsetting")
+   }
   return (
    <div className=" pl-8 border-black h-full relative  ">
    <div className="sidebaroptions  h-full  rounded-lg  ">
@@ -54,9 +68,9 @@ function Sidebar() {
       <div className="w-1/4 "> <RiHome3Line size={24} color="" className="opacity-60" />  </div> <div className=""> <h1>Feed</h1> </div>
          </div> </button></Link>  
 
-      <Link to={'/mymessages'}><button onClick={handleMessage} className="w-full text-[17px]   active:opacity-60   transition-colors    "> <div className="flex px-2 items-center ">
+      <button onClick={handleMessage} className="w-full text-[17px]   active:opacity-60   transition-colors    "> <div className="flex px-2 items-center ">
       <div className="w-1/4 "> <RiChat4Line size={24} color="" className="opacity-60" />  </div> <div className="3/4 flex items-center "> <h1>Messages</h1> {notify&&<i className="ml-2 text-[10px] bg-red-500 px-1 rounded-xl text-white font-semibold mt-1 ">{notify.notify}</i>}  </div>
-         </div> </button></Link>   
+         </div> </button>
 
         <Link to={'#'} > <button className="w-full text-[17px]   active:opacity-60   transition-colors     "> <div className="flex px-2 items-center">
       <div className="w-1/4 "> <RiNotificationBadgeLine size={24} color="" className="opacity-60" />  </div> <div className="3/4"> <h1>Reviews</h1> </div>
@@ -81,9 +95,9 @@ function Sidebar() {
 
     <div className="flex flex-col gap-4">
       
-    <Link to={`/accountsetting`}>   <button className="w-full  text-[17px]  active:opacity-60   transition-colors  "> <div className="flex px-2  items-center">
+     <button onClick={handleAccountsetting} className="w-full  text-[17px]  active:opacity-60   transition-colors  "> <div className="flex px-2  items-center">
       <div className="w-1/4 "> <RiUserSettingsLine size={24} color="" className="opacity-60 " />  </div> <div className="3/4"> <h1 className="text-nowrap">Setting</h1> </div>
-         </div> </button></Link>
+         </div> </button>
 
          <button onClick={handlelogout} className="w-full text-[17px]   active:opacity-60   transition-colors    "> <div className="flex px-2 items-center ">
       <div className="w-1/4 "> <RiLogoutBoxLine size={24} color="" className=" opacity-60 " />  </div> <div className="3/4"> <h1>Logout</h1> </div>
