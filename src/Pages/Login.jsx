@@ -35,7 +35,7 @@ function Login() {
          <a href={`${baseUrl}/auth/facebook`} className="border border-black px-2 py-2 bg-white"> <RiFacebookLine/> </a>
          </div>
         </div>
-        <a href="https://mazn.onrender.com/user/registration" target="_top" > Create Account?</a>
+        <a href={`${baseUrl}/user/registration`} target="_top" > Create Account?</a>
      
        </div>
 
