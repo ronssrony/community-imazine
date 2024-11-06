@@ -16,10 +16,10 @@ function PostShimmer() {
          </div>
         <div className="reaction"> 
             <p className='mb-1 mt-1 text-slate-300 bg-slate-300 animate-pulse max-w-20'> Dope</p>
-            <div className='reactionbtn flex justify-between px-2   text-lg bg-slate-300 text-white w-80 min-w-80'>
+            <div className='reactionbtn flex justify-between px-2   text-lg bg-slate-300 text-white w-96 min-w-96'>
                 <button className='border-r w-[30%] border-white animate-pulse '></button>
                 <button className='reviews border-r w-[40%] border-white animate-pulse  text-slate-300'>Reviews</button>
-                <button className='w-[30%] animate-pulse text-slate-300'>Share</button>
+                <button className='w-[30%] animate-pulse text-slate-300'>Share</button>gh
             </div>
         </div>
     </div>

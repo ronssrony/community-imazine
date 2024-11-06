@@ -5,6 +5,8 @@ import { Usenotification } from "../context/Notification";
 import { toast } from "react-toastify";
 import LoginFunc from "../Utility/LoginFn";
 import { UseLoginContext } from "../context/LoginProvider";
+import { RiFacebookLine, RiGoogleLine } from "@remixicon/react";
+import baseUrl from "../baseUrl";
 function Login() {
   const {setUser} = useContext(userContext)
   const history = useNavigate()
@@ -25,7 +27,15 @@ function Login() {
        <h1 className="p-2  text-3xl">Log In Your Account</h1>
        <input type="email" className="w-full min-w-60 p-2 text-lg outline-none bg-transparent border-b border-black" placeholder="Email or Username" onChange={(e)=>{setEmail(e.target.value)}} value={email} required />
        <input type="password" className="w-full  min-w-60 p-2 text-lg outline-none bg-transparent border-b border-black " placeholder="Password" onChange={(e)=>{setPassword(e.target.value)}} value={password} required />
-       <button type="submit" onClick={()=>handleLogin()} className="bg-white w-20 border border-black py-2 rounded ">Log In</button> <a href="https://mazn.onrender.com/user/registration" target="_top" > Create Account?</a>
+ 
+        <div className="flex gap-28 items-center">
+        <button type="submit" onClick={()=>handleLogin()} className="bg-white w-20 border border-black py-2 rounded ">Log In</button>
+         <div className="flex gap-3">
+         <a href={`${baseUrl}/auth/google`} className="border border-black px-2 py-2 bg-white"> <RiGoogleLine/> </a>
+         <a href={`${baseUrl}/auth/facebook`} className="border border-black px-2 py-2 bg-white"> <RiFacebookLine/> </a>
+         </div>
+        </div>
+        <a href="https://mazn.onrender.com/user/registration" target="_top" > Create Account?</a>
      
        </div>
 

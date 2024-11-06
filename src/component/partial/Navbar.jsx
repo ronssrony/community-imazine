@@ -1,12 +1,15 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import socket from "../../service/socket";
 import { userContext } from "../../context/UserProvider";
 import baseUrl from "../../baseUrl";
+import { Usenotification } from "../../context/Notification";
 
 function Navbar(){
    const searchbar = useRef(null)
    const [login, setLogin] = useState(null);
    const {user} = useContext(userContext)
+   const {setmyId} = Usenotification()
    const localuser = JSON.parse(localStorage.getItem('myId'))
 
    useEffect(()=>{
@@ -19,7 +22,13 @@ function Navbar(){
         setLogin(null)
        throw Error('user not logged in')
       }
-    }).catch((err)=>
+    })
+    .then(data=>{
+      localStorage.setItem('myId',JSON.stringify(data.imazineId))
+      setmyId(JSON.parse(localStorage.getItem('myId'))); 
+      socket.emit('active_user', data.imazineId)
+    })
+    .catch((err)=>
    console.log(err.message))
    },  [user] )
    

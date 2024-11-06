@@ -7,15 +7,17 @@ import { getHomepage } from "../Utility/QueryFn";
 import { useQuery } from "@tanstack/react-query";
 
 function Home() {
+  
   const { data, isLoading, error } = useQuery({
     queryKey: ["Homepage"],
     queryFn: getHomepage,
   });
+ 
   return (
     <>
       <div className="container  grid grid-cols-7 h-full">
         {isLoading && (
-          <div className="scrollbarShimmer overflow-y-scroll col-span-7 lg:col-span-5 ">
+          <div className="col-span-7 lg:col-span-5 ">
             <PostShimmer />
           </div>
         )}
