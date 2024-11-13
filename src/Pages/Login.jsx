@@ -36,11 +36,9 @@ function Login() {
          </div>
         </div>
         <a href={`${baseUrl}/user/registration`} target="_top" > Create Account?</a>
-     
+  
        </div>
 
-       
-   
     </div>
     </div>
   )

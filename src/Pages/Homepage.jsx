@@ -5,14 +5,12 @@ import Topdesigner from "../component/Homepage/Topdesigner";
 import Designershimmer from "../component/Shimmers/Designershimmer";
 import { getHomepage } from "../Utility/QueryFn";
 import { useQuery } from "@tanstack/react-query";
-
+import useSWR from "swr";
 function Home() {
   
-  const { data, isLoading, error } = useQuery({
-    queryKey: ["Homepage"],
-    queryFn: getHomepage,
-  });
- 
+  const { data, isLoading, error } = useSWR("Homepage" , getHomepage ,{
+    revalidateIfStale: false ,  revalidateOnFocus: true
+  })
   return (
     <>
       <div className="container  grid grid-cols-7 h-full">

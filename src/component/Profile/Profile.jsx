@@ -5,11 +5,13 @@ import Storycard from "./Storycard"
 import baseUrl from "../../baseUrl"
 import { useQuery } from "@tanstack/react-query"
 import { getProfile } from "../../Utility/QueryFn"
+import useSWR, { useSWRConfig } from 'swr'
 function Profile() {
     const {data, isLoading ,error} = useQuery({
       queryKey:['profile'] ,
       queryFn:getProfile
     })
+    const {mutate} =useSWRConfig()
     const [image ,setImage] = useState('/images/profile.jpg'); 
     const [ispendingimg , setPending ] = useState(false)
     const [submit , setSubmit] = useState('')
@@ -162,11 +164,12 @@ function Profile() {
      }).then((data)=>{
        setPosts(p=>[ data.post , ...p ]) 
       document.querySelector('input[name="story"]').value = ''; 
-        setStory(null)
+       setStory(null)
        setPostimage([]) ; 
        setVideo([]); 
        setFiles([]); 
        setpreviewVideos([])
+       mutate("Homepage")
        formdata = new FormData(); 
        setPulse('bg-green-200')
      }).catch((err)=>{
@@ -207,8 +210,7 @@ function Profile() {
       }
       )
         setFiles(newfile)
-
-  }
+     }
 
   function removevideos(e){
     let ind = e.target.getAttribute('id')

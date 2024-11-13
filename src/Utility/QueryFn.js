@@ -19,4 +19,17 @@ async function getProfile(){
     return response.data
 }
 
-export {getData , getHomepage , getProfile}
+async function getMessage(message , receiverId){
+    const response = await axios.post(`${baseUrl}/api/receivemessage` , {
+        message,          
+        receiverId,       
+        senderId: JSON.parse(localStorage.getItem('myId')) 
+    },{
+        withCredentials:true,
+    })
+   
+    return response.data
+    }
+
+
+export {getData , getHomepage , getProfile , getMessage}

@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import Reviews from '../Homepage/Reviews';
 import { RiArrowDropLeftLine, RiArrowDropRightLine, RiCloseFill, RiMore2Fill } from '@remixicon/react';
 import baseUrl from '../../baseUrl';
+import { mutate } from 'swr';
 function Choice({post , profile}) {
 
     const [dope , setDope] = useState('Dope'); 
@@ -75,12 +76,13 @@ function Choice({post , profile}) {
     }
    function handleDelete(){
         menu.current.style.display = 'block'
-
+       
         fetch(`${baseUrl}/api/post/${post._id}?referid=${post.referid}`, {
           method:"DELETE"
         }).then((res)=> res.json())
         .then((data)=>{
-          
+          console.log("deleted")
+          mutate("Homepage", undefined, { revalidate: true })
           setChoicehide('hidden')
         })
 
