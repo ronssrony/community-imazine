@@ -4,7 +4,7 @@ import socket from "../../service/socket";
 import { userContext } from "../../context/UserProvider";
 import baseUrl from "../../baseUrl";
 import { Usenotification } from "../../context/Notification";
-
+import { PlaceholdersAndVanishInputDemo } from "./searchbar";
 function Navbar(){
    const searchbar = useRef(null)
    const [login, setLogin] = useState(null);
@@ -46,7 +46,7 @@ function Navbar(){
   
       <div ref={searchbar}  className="col-span-8  md:col-span-7  items-center">
         <div className="searchwala relative ">
-          <input type="search" size="" autoComplete="off" name="search" className="w-full p-2 max-sm:border max-sm:border-black outline-none  bg-white border border-black"/> <label htmlFor="search" className="right-0 absolute  p-2 opacity-60 font-light max-sm:text-black">SEARCH</label>
+        <PlaceholdersAndVanishInputDemo/>
       </div>
       </div>
 

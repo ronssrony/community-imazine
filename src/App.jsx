@@ -47,7 +47,7 @@ return (
           <Route path="/profile/:userid" element={<Viewprofile />} />
           <Route path="/products" element={<Allproducts />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/profile" element={<Profile />}  />
           <Route path="/message/:receiverId" element={<Message />} />
           <Route path="/mymessages" element={<Mymessages />} />
           <Route path="/accountsetting" element={<AccoutSetting />} />
